@@ -9,11 +9,11 @@ S'appuie sur le PRD (extraction du design system du Portfolio) et sur le territo
 
 ## 1. Direction nommée
 
-**Affiche de nuit**, reprise telle quelle : gris sombre rythmé de sections de couleur, Bagel pour les titres, Fraunces italique pour les mises en valeur, lime et rose en touches, Manrope pour le texte.
+**Affiche de nuit, en version atelier.**
 
-**Ce qui est propre à KokoDesign : le mur d'affiches.** Dans le Portfolio, le motif « affiches collées » (cartes inclinées de -2° à 2°, qui se redressent au survol) sert aux projets. Ici, il devient **le catalogue lui-même** : chaque composant est une affiche collée au mur, posée sur un des six fonds, avec sa démo vivante dedans. C'est le seul endroit où le site prend un risque visuel ; tout le reste (en-tête, documentation, code) reste calme.
+L'identité du Portfolio (gris sombre, Bagel pour les titres, Fraunces italique pour les mises en valeur, lime et rose en touches, Manrope pour le texte) habille une **structure de documentation à la vue-bits** : un en-tête fin, une barre latérale qui range les composants par famille, et pour chaque composant un aperçu, le code, un panneau « Personnaliser » et le tableau des props.
 
-> Le Portfolio montre les projets comme des affiches. KokoDesign montre les briques comme des affiches.
+**La couleur vit dans l'aperçu.** Le cadre (en-tête, barre latérale, doc, code) reste sombre et calme. La zone d'aperçu de chaque composant se pose sur un des six fonds de section, au choix : c'est là que la DA « Affiche de nuit » s'exprime.
 
 ---
 
@@ -36,36 +36,47 @@ Les blocs de code sont nombreux ici, alors qu'ils n'existaient pas dans le Portf
 
 Quatre couleurs seulement : un code trop coloré se lit moins bien. Le violet-500 n'est jamais utilisé pour du texte de code (contraste insuffisant sur fond sombre, règle du Portfolio).
 
+### Écart avec le Portfolio : en-tête sombre
+
+Le Portfolio a un en-tête crème. KokoDesign passe à un **en-tête sombre** (neutral-950, filet neutral-700), comme les sites de documentation : avec une barre latérale, un bandeau clair couperait l'écran en deux. L'accent et le focus y redeviennent lime.
+
 ---
 
 ## 3. Typographie
 
 Familles, échelle et règles : **reprises sans changement**. Précisions pour KokoDesign :
 
-- **Noms de composants** : en JetBrains Mono quand ils désignent du code (`LetterReveal`), en Bagel quand ils sont le titre d'une affiche ou d'une page.
+- **Titre d'une page de composant** : son nom en Bagel (`--text-h1`).
+- **Noms de composants dans la barre latérale et dans le texte** : Manrope dans la barre latérale (lisibilité en petit), JetBrains Mono dans le texte courant (`LetterReveal`).
+- **Titres de sections de la doc** (« Personnaliser », « Props ») : Manrope gras, `--text-lead`. Bagel reste réservé aux grands titres.
 - **Code** : JetBrains Mono, `--text-sm` minimum (14 px), interlignage `--leading-body`.
-- **Phrase d'usage** sous le titre d'un composant : Manrope `--text-lead`, moins de 15 mots (territoire de marque § 6).
+- **Phrase d'usage** sous le titre : Manrope `--text-lead`, moins de 15 mots (territoire de marque § 6).
 
 ---
 
 ## 4. Logo
 
-Proposition (à choisir, voir § 8 ; les trois sont dans la planche) :
+**Retenu : B — symbole Kokonut + « Koko » en Bagel + « Design » en Fraunces italique.**
 
-- **A — Symbole Kokonut + « KokoDesign » en Bagel** *(recommandée)*. Même construction que `SiteLogo` dans le Portfolio : on reconnaît tout de suite la parenté, sans nouveau dessin.
-- **B — Symbole + « Koko » en Bagel et « Design » en Fraunces italique.** Plus expressif, mais coupe le nom en deux.
-- **C — Symbole seul**, nom écrit en Manrope à côté. Plus discret, moins de caractère.
-
-**Favicon** : le symbole Kokonut en **lime** sur fond neutral-950, pour distinguer l'onglet de celui du Portfolio (symbole violet).
+- Sur fond sombre, « Design » prend la couleur de mise en valeur (`--color-highlight`, lime) ; sur fond clair, le violet. Il suit donc la règle des rôles, comme toute mise en valeur en Fraunces.
+- Le symbole prend la couleur du texte (`currentColor`), comme dans `SiteLogo`.
+- **Favicon** : le symbole Kokonut en **lime** sur fond neutral-950, pour distinguer l'onglet de celui du Portfolio (symbole violet).
 
 ---
 
-## 5. Imagerie et iconographie
+## 5. Mise en page
 
-- **Pas de captures ni de photos** : les démos vivantes sont l'imagerie du site.
-- **Icônes** : celles du Portfolio (Lucide en SVG local, trait épais et arrondi), plus quelques-unes propres au catalogue : copier, code, réglages, accessibilité, langue.
-- **Motif « affiches collées »** : il devient le catalogue (§ 1). Inclinaisons de -2° à 2°, jamais deux voisines sur le même fond, droites sur mobile.
-- **Fond topographique** (`TopoBackground`) : réservé à l'en-tête de la page d'accueil, comme dans le Portfolio. Pas ailleurs, pour ne pas concurrencer les démos.
+| Zone | Contenu | Comportement |
+|---|---|---|
+| **En-tête** (60 px, collé en haut) | Logo · Composants · Design system · sélecteur de langue | Sur mobile : un bouton « Composants » ouvre la barre latérale |
+| **Barre latérale** (15 rem, collée) | Démarrer, puis les cinq familles du PRD et leurs composants ; le composant ouvert est en lime avec un filet à gauche | Défile seule ; masquée sous 1024 px |
+| **Page d'un composant** | Titre · phrase d'usage · onglets Aperçu / Code · aperçu (barre de fonds + Rejouer) · Personnaliser · Props · encadré « Animations réduites et limites » | Colonne unique, largeur max ~1100 px |
+| **Accueil** | En-tête de page sur fond violet avec le fond topographique, le nom en `LetterReveal`, la promesse, deux boutons (« Parcourir les composants », « Voir le design system ») | Plein écran sur mobile |
+
+- **Encadré des limites** : filet rose à gauche, sur la surface. C'est la valeur « Résilient » du territoire de marque : les limites se voient.
+- **Icônes** : celles du Portfolio (Lucide en SVG local, trait épais et arrondi), plus copier, code, rejouer, langue, menu.
+- **Pas de captures ni de photos** : les démos sont l'imagerie du site.
+- **Fond topographique** (`TopoBackground`) : réservé à l'accueil. La planche le remplace par un dégradé flou en attendant le vrai composant.
 
 ---
 
@@ -73,30 +84,26 @@ Proposition (à choisir, voir § 8 ; les trois sont dans la planche) :
 
 ### Le cadre obéit, la scène est libre
 
-Le Portfolio interdit les réactions au curseur (pas de bouton magnétique, rien qui suit la souris). KokoDesign montre des effets : certains futurs composants réagiront forcément au curseur. On sépare donc deux zones :
-
 | Zone | Règle |
 |---|---|
-| **Le cadre** : en-tête, navigation, documentation, tableaux, code | Règles du Portfolio, sans exception : apparitions simples, survol et clic, aucune réaction au curseur |
-| **La scène** : l'intérieur d'une démo | Libre : le composant montré peut faire ce qu'il veut, curseur compris, s'il respecte les trois règles non négociables ci-dessous |
+| **Le cadre** : en-tête, barre latérale, doc, tableaux, code | Règles du Portfolio, sans exception : survol et clic, aucune réaction au curseur, pas d'apparition au scroll |
+| **La scène** : l'intérieur d'un aperçu | Libre : le composant montré peut tout faire, curseur compris, s'il respecte les trois règles non négociables ci-dessous |
 
 ### Mouvements propres au site
 
 | Mouvement | Comportement | Durée et courbe |
 |---|---|---|
-| Affiche au survol ou au focus | Se redresse (rotation → 0°) et monte de `--card-lift` | `--duration-fast` (250 ms), `--ease-out` |
-| Changement de fond dans une démo | Fondu enchaîné de la couleur de fond | `--duration-fast`, `--ease-out` |
+| Changement de fond dans l'aperçu | Fondu de la couleur de fond | `--duration-fast` (250 ms), `--ease-out` |
+| Réglage dans « Personnaliser » | La démo rejoue tout de suite, sans transition ajoutée | — |
 | Bouton « Copier » | Appui (`--press-scale`), puis « Copié » pendant `--feedback-hold` | `--duration-press` (120 ms) |
-| Réglage d'une prop | Aucune transition ajoutée : la démo réagit tout de suite | — |
-| Arrivée sur l'accueil | Une seule entrée orchestrée : le nom en `LetterReveal`, puis les affiches se posent une à une (décalage `--stagger-block`, total < 500 ms) | Valeurs du Portfolio |
-
-Pas d'apparition au scroll sur chaque bloc de documentation : la page d'un composant doit être lisible tout de suite.
+| Interrupteur | La pastille glisse | `--duration-fast`, `--ease-out` |
+| Arrivée sur l'accueil | Une seule entrée : le nom lettre par lettre (`LetterReveal`) ; le fond topographique ondule lentement | Valeurs du Portfolio |
 
 ### Règles non négociables (reprises du Portfolio, appliquées à chaque composant)
 
-1. **L'essentiel ne patiente jamais** : la démo, le code et le bouton « Copier » sont utilisables en moins d'une seconde.
-2. **`prefers-reduced-motion`** : chaque composant documente son comportement réduit, et la démo montre ce mode avec un interrupteur « Animations réduites ».
-3. **Performance** : uniquement `transform` et `opacity` dans le cadre ; dans la scène, une démo hors de l'écran est mise en pause.
+1. **L'essentiel ne patiente jamais** : l'aperçu, le code et le bouton « Copier » sont utilisables en moins d'une seconde.
+2. **`prefers-reduced-motion`** : chaque composant documente son comportement réduit, et l'aperçu le montre avec l'interrupteur « Animations réduites ».
+3. **Performance** : uniquement `transform` et `opacity` dans le cadre ; dans la scène, un aperçu hors de l'écran est mis en pause.
 
 ---
 
@@ -108,6 +115,4 @@ Fonds de section, vagues (`SectionWave`), tokens d'espacement, rayons, zones cli
 
 ## 8. Questions ouvertes
 
-1. **Logo** : A (recommandé), B ou C ?
-2. **Le cadre obéit, la scène est libre** : d'accord pour autoriser les réactions au curseur dans les démos seulement ?
-3. **Mur d'affiches** comme catalogue (et accueil) : ça te parle, ou tu préfères une grille droite et sobre ?
+Aucune.
