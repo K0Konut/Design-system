@@ -4,34 +4,25 @@ import { computed } from 'vue'
 /* Résultat chiffré (design system § StatBlock) : le chiffre en grand, son libellé ; avec `before` et `after`,
    deux barres proportionnelles qui se remplissent une fois à l'arrivée à l'écran (v-reveal), l'« après »
    --stagger-bar après l'« avant ». Pas de compteur qui défile. Les barres sont décoratives : tout est dans le texte. */
-const props = withDefaults(
-  defineProps<{
-    value: string
-    label: string
-    before?: number
-    after?: number
-    /** Rang, pour le décalage d'apparition */
-    index?: number
-    /** Libellés des deux barres */
-    beforeLabel?: string
-    afterLabel?: string
-  }>(),
-  {
-    before: undefined,
-    after: undefined,
-    index: undefined,
-    beforeLabel: 'avant',
-    afterLabel: 'après',
-  },
-)
+const props = defineProps<{
+  value: string
+  label: string
+  before?: number
+  after?: number
+  /** Rang, pour le décalage d'apparition */
+  index?: number
+  /** Libellés des deux barres, « avant » et « après » par défaut */
+  beforeLabel?: string
+  afterLabel?: string
+}>()
 
 const bars = computed(() => {
   const { before, after } = props
   if (before === undefined || after === undefined) return []
   const max = Math.max(before, after) || 1
   return [
-    { key: 'before', label: props.beforeLabel, value: before, width: before / max },
-    { key: 'after', label: props.afterLabel, value: after, width: after / max },
+    { key: 'before', label: props.beforeLabel ?? 'avant', value: before, width: before / max },
+    { key: 'after', label: props.afterLabel ?? 'après', value: after, width: after / max },
   ]
 })
 </script>

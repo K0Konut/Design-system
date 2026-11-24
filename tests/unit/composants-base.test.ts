@@ -42,6 +42,15 @@ describe('BaseButton', () => {
     expect(w.attributes('href')).toBe('/fr/projets')
   })
 
+  it('sans vue-router, ne fabrique pas d’adresse à partir d’un objet de route', () => {
+    const w = mount(BaseButton, {
+      props: { to: { name: 'projets' } },
+      slots: { default: 'Projets' },
+    })
+    expect(w.element.tagName).toBe('A')
+    expect(w.attributes('href')).toBeUndefined()
+  })
+
   it('ouvre un site externe dans un nouvel onglet, comme un lien texte', () => {
     const w = mount(BaseButton, {
       props: { href: 'https://github.com/K0Konut', icon: 'arrow-up-right' },

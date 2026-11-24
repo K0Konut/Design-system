@@ -118,7 +118,7 @@ Les 26 briques, rangées par famille. « Briques » : autres fichiers de `src/` 
 
 | Fichier | Avant (Portfolio) | Après |
 |---|---|---|
-| `useLink` | `vue-i18n` pour « (nouvel onglet) », `RouterLink` importé | Prop `newTabLabel` (« (nouvel onglet) » par défaut) ; `RouterLink` pris dans l'application s'il y est déclaré, sinon `<a>` |
+| `useLink` | `vue-i18n` pour « (nouvel onglet) », `RouterLink` importé | Prop `newTabLabel` (« (nouvel onglet) » par défaut) ; `RouterLink` pris dans l'application s'il y est déclaré, sinon `<a>` (sans routeur, `to` doit être une chaîne) |
 | `NextLink` | `<RouterLink>` en dur | Passe par `useLink` |
 | `CopyButton` | `vue-i18n` | Prop `labels` (`idle`, `copied`, `selected`), en français par défaut |
 | `StatBlock` | `vue-i18n` | Props `beforeLabel`, `afterLabel` (« avant », « après » par défaut) |
@@ -151,4 +151,4 @@ Déduits de l'architecture UX (§ 3 et § 4) et de la planche de la DA. Spécifi
 ## 7. Vérifications du lot 1
 
 - `npm run type-check`, `npm run lint`, `npm run format:check` : OK.
-- `npm run test` : 30 tests, repris du Portfolio (briques, composants de base, vague) et complétés pour le découplage (lien sans routeur, textes en props).
+- `npm run test` : 31 tests, repris du Portfolio (briques, composants de base, vague) et complétés pour le découplage (lien sans routeur, textes en props).

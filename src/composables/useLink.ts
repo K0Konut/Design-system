@@ -18,12 +18,17 @@ export interface LinkProps {
 export function useLink(props: LinkProps) {
   const routerLink = getCurrentInstance()?.appContext.components.RouterLink as Component | undefined
   const external = computed(() => !!props.href && /^https?:\/\//.test(props.href))
-  const tag = computed(() =>
-    props.to && routerLink ? routerLink : props.to || props.href ? 'a' : 'button',
-  )
+  const tag = computed(() => {
+    if (props.to && routerLink) return routerLink
+    return props.to || props.href ? 'a' : 'button'
+  })
   // Un lien du routeur ne reçoit que sa destination : un `href` vide écraserait celui qu'il calcule
   const attrs = computed(() => {
-    if (props.to) return routerLink ? { to: props.to } : { href: String(props.to) }
+    // Sans routeur, seule une adresse en chaîne a un sens : un objet de route ({ name }) ne se résout pas
+    if (props.to)
+      return routerLink
+        ? { to: props.to }
+        : { href: typeof props.to === 'string' ? props.to : undefined }
     if (!props.href) return { type: 'button' }
     return {
       href: props.href,

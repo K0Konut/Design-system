@@ -6,7 +6,6 @@ import BaseIcon from './BaseIcon.vue'
 /* Grand lien vers la suite (design system § NextLink) : un libellé, le titre en grand et une flèche.
    Au survol et au focus, la flèche avance et le titre se souligne. */
 const props = defineProps<{ label: string; title: string; to: RouteLocationRaw }>()
-// Lien du routeur s'il est installé, simple <a> sinon
 const { tag, attrs } = useLink(props)
 </script>
 
