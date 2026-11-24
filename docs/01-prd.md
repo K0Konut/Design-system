@@ -1,6 +1,6 @@
 # 01 — PRD · KokoDesign
 
-> Statut : brouillon, à valider · Date : 2026-11-24
+> Statut : validé · Date : 2026-11-24
 
 ## 1. Contexte et problème
 
@@ -59,7 +59,7 @@ Des sites comme react-bits ou vue-bits montrent qu'on peut rassembler ce genre d
 ## 6. Contraintes
 
 - **Technique** : Vue 3 + TypeScript, site 100 % statique, aucun backend.
-- **Hébergement** : build statique déployé sur mon serveur personnel, sous mon nom de domaine.
+- **Hébergement** : build statique déployé sur mon serveur personnel, a priori sur `design.costamask.dev`.
 - **Accessibilité** : WCAG AA, navigation clavier complète, `prefers-reduced-motion` respecté par chaque effet.
 - **Légal** : pas de cookies ni d'analytics au MVP, donc pas de bandeau RGPD. Code sous licence **MIT**.
 - **Délai et budget** : projet personnel, sans échéance imposée.
@@ -83,4 +83,4 @@ Les briques UI servent aussi au site lui-même : le site est le premier utilisat
 
 ## 7. Questions ouvertes
 
-1. **Domaine** : sous quelle adresse le site sera-t-il servi (domaine racine ou sous-domaine) ? À trancher avant la phase 7.
+Aucune à ce stade. Adresse pressentie : `design.costamask.dev`, à confirmer en phase 7.

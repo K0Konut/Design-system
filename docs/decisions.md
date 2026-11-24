@@ -10,3 +10,4 @@
 | 2026-11-24 | Licence MIT | Le code doit pouvoir être copié librement |
 | 2026-11-24 | Hébergement sur le serveur perso, sous le domaine perso | Infrastructure déjà disponible |
 | 2026-11-24 | 10 composants de lancement (5 UI, 5 Effets) | Les briques UI servent aussi au site lui-même |
+| 2026-11-24 | Adresse pressentie : design.costamask.dev | Sous-domaine du domaine perso |
