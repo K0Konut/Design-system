@@ -1,6 +1,6 @@
 # 02 — Territoire de marque · KokoDesign
 
-> Statut : brouillon, à valider · Date : 2026-11-24
+> Statut : validé · Date : 2026-11-24
 
 S'appuie sur le PRD (KokoDesign extrait le design system du Portfolio) et sur le territoire de marque du Portfolio (`~/Projects/Portfolio/docs/02-territoire-de-marque.md`), **qui fait foi** pour tout ce qui n'est pas redéfini ici.
 
@@ -27,10 +27,11 @@ Le lien est affiché : un renvoi vers `costamask.dev` dans le pied de page, et i
 
 **Vision** — un design system se prouve en le montrant : chaque brique visible, réglable, copiable.
 
-**Promesse** — proposition (à choisir, voir § 8) :
-1. **« Des briques prêtes à copier, déjà testées en vrai. »** *(recommandée : dit l'usage et la preuve, chaque composant vient d'un site en production)*
-2. « Les briques de mes projets, à copier. »
-3. « Copier, coller, c'est construit. »
+**Promesse**
+> **Des briques prêtes à copier, déjà testées en vrai.**
+> *EN : Ready-to-copy building blocks, already tested for real.*
+
+Elle dit l'usage (copier) et la preuve : chaque composant vient d'un site en production.
 
 ---
 
@@ -73,7 +74,8 @@ Reprise du Portfolio (créateur + explorateur, curseurs identiques). Un seul aju
 
 Règles du Portfolio (phrases courtes et concrètes, « je », humour rare), avec ces ajustements pour une documentation technique :
 
-- **Adresse** : proposition **« tu »**, l'usage courant dans la documentation pour développeurs (à valider, voir § 8).
+- **Adresse** : **« tu »**, l'usage courant dans la documentation pour développeurs (le Portfolio, lui, vouvoie).
+- **Langues** : **français et anglais**, au même niveau. En anglais, même ton décontracté, « you ».
 - **Impératif pour les instructions** : « Copie le composant », « Passe le texte en prop ».
 - **Un composant = une phrase d'usage** : ce qu'il fait, en moins de 15 mots.
 - **Pas de superlatifs** : on montre la démo, on ne dit pas qu'elle est « incroyable ».
@@ -100,9 +102,7 @@ Celui du Portfolio, **construire brique par brique**, qui devient ici le vocabul
 
 ## 8. Questions ouvertes
 
-1. **Promesse** : laquelle des trois (§ 2) ?
-2. **Adresse** : « tu » (recommandé) ou « vous » comme le Portfolio ?
-3. **Langue** : français seul, anglais seul (public dev plus large), ou les deux comme le Portfolio ?
+Aucune.
 
 ---
 
