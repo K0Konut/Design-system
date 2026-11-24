@@ -1,6 +1,6 @@
 # 04 — Architecture de contenu & UX · KokoDesign
 
-> Statut : brouillon, à valider · Date : 2026-11-24
+> Statut : validé · Date : 2026-11-24
 
 S'appuie sur le PRD (MVP, 26 composants en cinq familles, ajout d'un composant en moins de 15 min), le territoire de marque (tutoiement, FR / EN, limites assumées) et la DA (structure de documentation façon vue-bits, couleur dans l'aperçu, planche `docs/06-maquettes/moodboard.html`).
 
@@ -53,7 +53,7 @@ Même convention que le Portfolio : une langue par préfixe, `hreflang` sur chaq
 | Page d'un composant | `/fr/composants/letter-reveal` | `/en/components/letter-reveal` |
 | Mentions légales | `/fr/mentions-legales` | `/en/legal-notice` |
 
-- **La famille n'est pas dans l'URL** : un composant peut changer de famille sans casser ses liens. *(Proposition, voir § 9.)*
+- **La famille n'est pas dans l'URL** : un composant peut changer de famille sans casser ses liens.
 - **Le slug est le nom du composant en kebab-case**, identique dans les deux langues (c'est le nom qu'on tape dans le code). La directive `v-reveal` garde `v-reveal`.
 - La racine `/` redirige vers `/fr` ou `/en` selon la langue du navigateur (détail en phase 7).
 
@@ -94,7 +94,7 @@ Ordre fixe, le même pour les 26 (valeur « Rigoureux ») :
 | 1 | Titre | Nom du composant (Bagel) + phrase d'usage (< 15 mots) |
 | 2 | Onglets **Aperçu / Code** | — |
 | 2a | Aperçu | Barre : six fonds, Rejouer. Scène : la démo sur le fond choisi (fond par défaut propre à chaque composant) |
-| 2b | Code | **Utilisation** : l'appel du composant avec les réglages en cours, copiable. **Source** : le fichier `.vue` complet, copiable *(proposition, voir § 9)* |
+| 2b | Code | **Utilisation** : l'appel du composant avec les réglages en cours, copiable. **Source** : le fichier `.vue` complet, copiable |
 | 3 | Personnaliser | Un contrôle par option réglable (texte, nombre, booléen, liste) + l'interrupteur « Animations réduites » |
 | 4 | Props | Tableau : nom, type, défaut, rôle. Puis slots et événements s'il y en a |
 | 5 | Dépendances | Ce que le composant demande en plus de `tokens.css` : autre brique (`BaseIcon`), bibliothèque (GSAP), police |
@@ -242,6 +242,4 @@ Basse fidélité, sans décision visuelle. La planche de la phase 3 montre déj�
 
 ## 9. Questions ouvertes
 
-1. **URL sans la famille** (`/fr/composants/letter-reveal`, recommandé, liens stables) ou avec (`/fr/textes-animes/letter-reveal`, comme vue-bits) ?
-2. **Onglet Code** : Utilisation **et** source complète (recommandé : c'est ce qui rend le copier-coller autonome), ou seulement la source ?
-3. **Mentions légales** : une page à KokoDesign (recommandé, même hébergeur à nommer), ou un lien vers celles du Portfolio ?
+Aucune.

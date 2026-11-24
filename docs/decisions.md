@@ -25,3 +25,7 @@
 | 2026-11-24 | Le cadre obéit, la scène est libre : réactions au curseur permises dans les démos seulement | Certains effets en ont besoin ; le site garde les règles du Portfolio |
 | 2026-11-24 | En-tête sombre au lieu de crème (écart avec le Portfolio) | Un bandeau clair couperait l'écran avec une barre latérale |
 | 2026-11-24 | Thème du code en quatre couleurs de la palette (contrastes ≥ 6,5:1) | Pas de nouvelle teinte, lisibilité |
+| 2026-11-24 | URLs `/fr/composants/<slug>` et `/en/components/<slug>`, sans la famille | Liens stables si un composant change de famille |
+| 2026-11-24 | Onglet Code : Utilisation + fichier source complet, tous deux copiables | Le copier-coller doit suffire, même pour qui arrive par un moteur de recherche |
+| 2026-11-24 | Page de mentions légales propre à KokoDesign | Site autonome, hébergeur à nommer |
+| 2026-11-24 | Ordre fixe de la page composant, avec un bloc Dépendances | Rigueur ; chaque page doit se suffire à elle-même |
