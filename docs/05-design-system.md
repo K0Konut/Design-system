@@ -129,6 +129,19 @@ Les 26 briques, rangées par famille. « Briques » : autres fichiers de `src/` 
 
 ---
 
+### Corrections faites à la revue de code
+
+Ces défauts existent aussi dans le Portfolio : à reporter là-bas.
+
+| Fichier | Défaut | Correction |
+|---|---|---|
+| `TopoBackground` | Au démontage, `clearTimeout` recevait un numéro d'idle et pouvait annuler le minuteur d'un autre composant | N'annule que l'API qui a servi |
+| `LetterReveal` | En démarrage `manual`, les lettres apparaissaient d'office au bout de 3 s, avant `play()` | Le secours des 3 s ne vaut que pour `load` |
+| `DragToSnap` | Sans cible, l'élément était « proche » dès le début d'un glisser et ne revenait pas à sa place | Jamais « proche » sans cible |
+| `useTopography` | Un shader qui ne compile pas laissait un contexte WebGL ouvert à chaque essai | Le contexte est libéré |
+| `CopyButton` | `--feedback-hold` écrit en ms durait 1 000 fois trop longtemps | Lit les s et les ms |
+| `wave.ts` | Quand la largeur ne tombe pas sur un pas, la vague finissait avant le bord droit | Toujours un dernier point au bord droit |
+
 ## 6. Composants du site (lot 3)
 
 Déduits de l'architecture UX (§ 3 et § 4) et de la planche de la DA. Spécifiés en détail au lot 3.
@@ -151,4 +164,4 @@ Déduits de l'architecture UX (§ 3 et § 4) et de la planche de la DA. Spécifi
 ## 7. Vérifications du lot 1
 
 - `npm run type-check`, `npm run lint`, `npm run format:check` : OK.
-- `npm run test` : 31 tests, repris du Portfolio (briques, composants de base, vague) et complétés pour le découplage (lien sans routeur, textes en props).
+- `npm run test` : 34 tests, repris du Portfolio (briques, composants de base, vague) et complétés pour le découplage (lien sans routeur, textes en props) et les corrections de la revue.
