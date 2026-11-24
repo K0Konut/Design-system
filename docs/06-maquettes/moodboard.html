@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KokoDesign — planche de tendance</title>
+<style>
+@font-face { font-family: 'Bagel Fat One'; src: url('fonts/bagel-fat-one-latin.woff2') format('woff2'); font-display: swap; }
+@font-face { font-family: 'Fraunces'; font-style: italic; font-weight: 400; src: url('fonts/fraunces-italic-latin.woff2') format('woff2'); font-display: swap; }
+@font-face { font-family: 'Manrope'; font-weight: 400 700; src: url('fonts/manrope-latin.woff2') format('woff2'); font-display: swap; }
+@font-face { font-family: 'JetBrains Mono'; font-weight: 400 500; src: url('fonts/jetbrains-mono-latin.woff2') format('woff2'); font-display: swap; }
+
+/* Sous-ensemble des tokens du Portfolio (design system v1.2 § 2) */
+:root {
+  --violet-500: #4B3CFF; --violet-700: #17105B; --lime-500: #C7FF00; --pink-500: #FF6BD6;
+  --neutral-50: #F5F1E8; --neutral-100: #E8E1D4; --neutral-400: #A39E94; --neutral-700: #474747;
+  --neutral-850: #232428; --neutral-900: #1A1B1E; --neutral-950: #101113;
+  --color-bg: var(--neutral-950); --color-surface: var(--neutral-900);
+  --color-text: var(--neutral-50); --color-text-muted: var(--neutral-100); --color-text-subtle: var(--neutral-400);
+  --color-action: var(--lime-500); --color-on-action: var(--neutral-950); --color-highlight: var(--lime-500);
+  --color-detail: var(--pink-500); --color-border: var(--neutral-700); --color-focus: var(--lime-500);
+  --font-display: 'Bagel Fat One', ui-rounded, system-ui, sans-serif;
+  --font-accent: 'Fraunces', Georgia, serif;
+  --font-body: 'Manrope', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --text-display: clamp(3.5rem, 1.5rem + 9vw, 6rem); --text-h2: clamp(1.875rem, 1.4rem + 2vw, 2.5rem);
+  --text-h3: clamp(1.5rem, 1.3rem + 1vw, 1.75rem); --text-lead: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --text-body: clamp(1rem, 0.95rem + 0.25vw, 1.125rem); --text-sm: 0.875rem; --text-logo: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+  --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-5: 24px; --space-6: 32px; --space-7: 48px; --space-8: 64px;
+  --space-section: clamp(4rem, 10vw, 8rem); --gutter: clamp(1rem, 4vw, 3rem); --container: 1240px; --measure: 52ch;
+  --radius-sm: 8px; --radius-md: 16px; --radius-lg: 28px; --radius-pill: 999px; --target-min: 44px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1); --duration-fast: 250ms; --duration-press: 120ms;
+  --duration-letter: 600ms; --stagger-letter: 40ms; --stagger-block: 80ms; --letter-rise: 0.4em;
+  --card-lift: 8px; --press-scale: 0.98;
+}
+/* Fonds de section : chacun réaffecte les rôles */
+.fond-nuit { background: var(--neutral-950); }
+.fond-violet { background: var(--violet-700); --color-text-subtle: var(--neutral-100); }
+.fond-violet-vif { background: var(--violet-500); --color-text-muted: var(--neutral-50); --color-text-subtle: var(--neutral-50); --color-detail: var(--neutral-50); }
+.fond-lime, .fond-rose, .fond-creme { --color-text: var(--neutral-950); --color-text-muted: var(--neutral-950); --color-action: var(--neutral-950); --color-focus: var(--neutral-950); }
+.fond-lime { background: var(--lime-500); --color-text-subtle: var(--neutral-700); --color-on-action: var(--lime-500); --color-highlight: var(--violet-500); --color-detail: var(--violet-500); }
+.fond-rose { background: var(--pink-500); --color-text-subtle: var(--neutral-950); --color-on-action: var(--pink-500); --color-highlight: var(--violet-700); --color-detail: var(--violet-700); }
+.fond-creme { background: var(--neutral-50); --color-text-subtle: var(--neutral-700); --color-on-action: var(--lime-500); --color-highlight: var(--violet-500); --color-detail: var(--violet-500); }
+[class*='fond-'] { color: var(--color-text); }
+
+* { box-sizing: border-box; margin: 0; }
+body { background: var(--color-bg); color: var(--color-text); font: var(--text-body)/1.6 var(--font-body); }
+:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }
+.wrap { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
+section { padding-block: var(--space-section); }
+h2 { font: var(--text-h2)/0.95 var(--font-display); margin-bottom: var(--space-4); }
+.note { color: var(--color-text-subtle); max-width: var(--measure); margin-bottom: var(--space-7); }
+em { font-family: var(--font-accent); color: var(--color-highlight); }
+code { font-family: var(--font-mono); font-size: 0.9em; }
+
+/* En-tête crème, comme le Portfolio */
+.header { background: var(--neutral-50); color: var(--neutral-950); --color-focus: var(--violet-500); }
+.header .wrap { display: flex; align-items: center; justify-content: space-between; min-height: 60px; gap: var(--space-5); }
+.header nav { display: flex; gap: var(--space-5); font-weight: 500; }
+.header nav a { color: inherit; text-decoration: none; min-height: var(--target-min); display: inline-flex; align-items: center; }
+.header nav a[aria-current] { color: var(--violet-500); }
+.logo { display: inline-flex; align-items: center; gap: var(--space-2); font: var(--text-logo)/1 var(--font-display); white-space: nowrap; }
+.logo svg { width: 1.5em; height: 1.5em; flex: none; }
+
+/* Accueil */
+.hero { text-align: center; }
+.hero h1 { font: var(--text-display)/0.95 var(--font-display); }
+.hero h1 span { display: inline-block; animation: rise var(--duration-letter) var(--ease-out) both; animation-delay: calc(var(--i) * var(--stagger-letter)); }
+.hero p { font-size: var(--text-lead); margin-top: var(--space-5); color: var(--color-text-muted); }
+@keyframes rise { from { opacity: 0; transform: translateY(var(--letter-rise)); } }
+
+/* Mur d'affiches : le seul risque visuel du site */
+.wall { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--space-7) var(--space-6); }
+.poster { position: relative; border-radius: var(--radius-md); padding: var(--space-5); min-height: 300px; display: flex; flex-direction: column; gap: var(--space-4);
+  transform: rotate(var(--tilt, 0deg)); transition: transform var(--duration-fast) var(--ease-out);
+  animation: settle 700ms var(--ease-out) both; animation-delay: calc(400ms + var(--i) * var(--stagger-block)); }
+.poster:hover, .poster:focus-within { transform: translateY(calc(var(--card-lift) * -1)) rotate(0deg); }
+@keyframes settle { from { opacity: 0; transform: translateY(24px) rotate(var(--tilt, 0deg)); } }
+.poster h3 { font: var(--text-h3)/1 var(--font-display); }
+.poster p { color: var(--color-text-subtle); font-size: var(--text-sm); line-height: 1.3; }
+.poster .stage { flex: 1; display: grid; place-items: center; }
+.poster a.cover { position: absolute; inset: 0; border-radius: inherit; }
+.poster a.cover span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+/* Mini-démos */
+.btn { font: 600 1rem/1 var(--font-body); min-height: var(--target-min); padding: 0 var(--space-5); border-radius: var(--radius-pill); border: 1.5px solid var(--color-action); cursor: pointer;
+  background: var(--color-action); color: var(--color-on-action); transition: transform var(--duration-press) var(--ease-out); position: relative; z-index: 1; }
+.btn.outline { background: transparent; color: var(--color-action); }
+.btn:hover { transform: translateY(-3px); } .btn:active { transform: scale(var(--press-scale)); }
+.tag { display: inline-block; border: 1.5px solid var(--color-detail); color: var(--color-detail); border-radius: var(--radius-pill); padding: 2px var(--space-3); font-size: var(--text-sm); margin: 2px; }
+.reveal-word { font: 2.6rem/1 var(--font-display); }
+.reveal-word span { display: inline-block; }
+.poster:hover .reveal-word span, .poster:focus-within .reveal-word span { animation: rise var(--duration-letter) var(--ease-out) both; animation-delay: calc(var(--i) * var(--stagger-letter)); }
+.bars { width: 100%; display: grid; gap: var(--space-2); }
+.bars div { height: 12px; border-radius: var(--radius-pill); background: currentColor; transform-origin: left; transition: transform 700ms var(--ease-out); }
+.bars div:first-child { opacity: .35; transform: scaleX(.85); } .bars div:last-child { transform: scaleX(.3); }
+.poster:hover .bars div:last-child, .poster:focus-within .bars div:last-child { transform: scaleX(1); transition-delay: 150ms; }
+.hint { width: 2px; height: 48px; background: currentColor; border-radius: 2px; }
+.poster:hover .hint { animation: hint 900ms var(--ease-out) 2; }
+@keyframes hint { 50% { transform: translateY(12px); } }
+
+/* Page d'un composant */
+.doc { display: grid; grid-template-columns: 1fr; gap: var(--space-5); }
+.doc h3 { font: var(--text-h2)/0.95 var(--font-display); }
+.doc .lead { font-size: var(--text-lead); color: var(--color-text-muted); }
+.toolbar { display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between; }
+.tabs { display: inline-flex; background: var(--color-surface); border-radius: var(--radius-pill); padding: 4px; }
+.tabs button { font: 600 var(--text-sm) var(--font-body); min-height: 36px; padding: 0 var(--space-4); border: 0; border-radius: var(--radius-pill); background: none; color: var(--color-text-muted); cursor: pointer; }
+.tabs button[aria-selected='true'] { background: var(--color-action); color: var(--color-on-action); }
+.swatches { display: flex; gap: var(--space-2); }
+.swatches button { width: var(--target-min); height: var(--target-min); border-radius: 50%; border: 2px solid var(--neutral-700); cursor: pointer; }
+.swatches button[aria-pressed='true'] { border-color: var(--neutral-50); box-shadow: inset 0 0 0 3px var(--color-bg); }
+.big-stage { border-radius: var(--radius-lg); min-height: 360px; display: grid; place-items: center; text-align: center; transition: background-color var(--duration-fast) var(--ease-out); }
+.big-stage .reveal-word { font-size: clamp(3rem, 8vw, 5.5rem); }
+.big-stage.play .reveal-word span { animation: rise var(--duration-letter) var(--ease-out) both; animation-delay: calc(var(--i) * var(--stagger-letter)); }
+.big-stage.reduce .reveal-word span { animation-name: fade !important; animation-duration: 300ms !important; }
+@keyframes fade { from { opacity: 0; } }
+.switch { display: inline-flex; align-items: center; gap: var(--space-3); font-size: var(--text-sm); min-height: var(--target-min); cursor: pointer; }
+.switch input { width: 40px; height: 22px; accent-color: var(--lime-500); }
+pre { background: var(--color-surface); border-radius: var(--radius-md); padding: var(--space-5); overflow-x: auto; font: var(--text-sm)/1.6 var(--font-mono); color: var(--neutral-50); }
+.tk-k { color: var(--lime-500); } .tk-s { color: var(--pink-500); } .tk-t { color: var(--neutral-100); } .tk-c { color: var(--neutral-400); }
+.code-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); }
+table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
+th, td { text-align: left; padding: var(--space-3) var(--space-3) var(--space-3) 0; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+th { color: var(--color-text-subtle); font-weight: 500; }
+td code { color: var(--lime-500); }
+
+/* Logos */
+.logos { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-5); }
+.logos figure { border-radius: var(--radius-md); padding: var(--space-6) var(--space-5); display: grid; gap: var(--space-5); place-items: center; }
+.logos figcaption { font-size: var(--text-sm); color: var(--color-text-subtle); text-align: center; }
+.logos .logo { font-size: 1.75rem; }
+.logo.b .d { font-family: var(--font-accent); color: var(--violet-500); }
+.logo.c { font-family: var(--font-body); font-weight: 700; letter-spacing: -0.01em; }
+.favicon { width: 64px; height: 64px; border-radius: 14px; background: var(--neutral-950); color: var(--lime-500); display: grid; place-items: center; }
+.favicon svg { width: 40px; }
+
+@media (min-width: 1024px) { .doc { grid-template-columns: 1.4fr 1fr; align-items: start; } .doc > .span { grid-column: 1 / -1; } }
+@media (max-width: 767px) { .poster { --tilt: 0deg !important; } .header nav a:not(:last-child) { display: none; } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 300ms !important; animation-name: fade !important; animation-delay: 0ms !important; animation-iteration-count: 1 !important; transition-duration: 0ms !important; }
+  .poster, .poster:hover { transform: none; }
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="kokonut" viewBox="27 27 146 146"><g fill="none" stroke="currentColor" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"><path d="M120 40H40V160H120"/><path d="M72 128V72H160V160"/><path d="M116 72V128"/></g></symbol>
+</svg>
+
+<header class="header">
+  <div class="wrap">
+    <span class="logo"><svg aria-hidden="true"><use href="#kokonut"/></svg>KokoDesign</span>
+    <nav aria-label="Principale">
+      <a href="#mur" aria-current="page">Composants</a>
+      <a href="#page">Design system</a>
+      <a href="#logos">FR / EN</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero fond-violet">
+    <div class="wrap">
+      <h1 aria-label="KokoDesign" id="hero-title"></h1>
+      <p>Des briques prêtes à copier, <em>déjà testées en vrai.</em></p>
+    </div>
+  </section>
+
+  <section id="mur">
+    <div class="wrap">
+      <h2>Le mur d'affiches</h2>
+      <p class="note">Le catalogue est un mur : chaque brique est une affiche collée sur un des six fonds, inclinée, qui se redresse au survol. Passe la souris ou tabule sur une affiche pour lancer sa démo.</p>
+      <div class="wall">
+        <article class="poster fond-rose" style="--tilt:-1.5deg;--i:0">
+          <h3>LetterReveal</h3><p>Les lettres montent une à une, puis se posent.</p>
+          <div class="stage"><span class="reveal-word" data-split>Bonjour</span></div>
+          <a class="cover" href="#page"><span>Voir LetterReveal</span></a>
+        </article>
+        <article class="poster fond-nuit" style="--tilt:1deg;--i:1;outline:1.5px solid var(--neutral-700)">
+          <h3>BaseButton</h3><p>Bouton ou lien-bouton, plein ou en contour.</p>
+          <div class="stage"><div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center"><button class="btn">Copier</button><button class="btn outline">Voir le code</button></div></div>
+        </article>
+        <article class="poster fond-lime" style="--tilt:-0.5deg;--i:2">
+          <h3>StatBlock</h3><p>Un résultat chiffré, avec ses barres avant / après.</p>
+          <div class="stage"><div class="bars" aria-hidden="true"><div></div><div></div></div></div>
+          <a class="cover" href="#page"><span>Voir StatBlock</span></a>
+        </article>
+        <article class="poster fond-violet" style="--tilt:2deg;--i:3">
+          <h3>BaseTag</h3><p>Une étiquette en contour, teintée sur fond sombre.</p>
+          <div class="stage"><div><span class="tag">Vue 3</span><span class="tag">GSAP</span><span class="tag">WebGL</span></div></div>
+          <a class="cover" href="#page"><span>Voir BaseTag</span></a>
+        </article>
+        <article class="poster fond-creme" style="--tilt:-2deg;--i:4">
+          <h3>ScrollHint</h3><p>Un trait discret qui dit que la page continue.</p>
+          <div class="stage"><div class="hint" aria-hidden="true"></div></div>
+          <a class="cover" href="#page"><span>Voir ScrollHint</span></a>
+        </article>
+        <article class="poster fond-violet-vif" style="--tilt:1.5deg;--i:5">
+          <h3>CopyButton</h3><p>Un texte à copier, avec sa confirmation.</p>
+          <div class="stage"><button class="btn" data-copy="design.costamask.dev">design.costamask.dev</button></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="page" style="padding-top:0">
+    <div class="wrap doc">
+      <div class="span">
+        <h3>LetterReveal</h3>
+        <p class="lead">Les lettres montent une à une, puis se posent.</p>
+      </div>
+      <div>
+        <div class="toolbar" style="margin-bottom:var(--space-4)">
+          <div class="tabs" role="tablist" aria-label="Affichage">
+            <button role="tab" aria-selected="true" aria-controls="tab-demo" id="t-demo">Démo</button>
+            <button role="tab" aria-selected="false" aria-controls="tab-code" id="t-code" tabindex="-1">Code</button>
+          </div>
+          <div class="swatches" role="group" aria-label="Fond de la démo">
+            <button aria-pressed="false" aria-label="Nuit" data-fond="nuit" style="background:var(--neutral-950)"></button>
+            <button aria-pressed="true" aria-label="Violet" data-fond="violet" style="background:var(--violet-700)"></button>
+            <button aria-pressed="false" aria-label="Violet vif" data-fond="violet-vif" style="background:var(--violet-500)"></button>
+            <button aria-pressed="false" aria-label="Lime" data-fond="lime" style="background:var(--lime-500)"></button>
+            <button aria-pressed="false" aria-label="Rose" data-fond="rose" style="background:var(--pink-500)"></button>
+            <button aria-pressed="false" aria-label="Crème" data-fond="creme" style="background:var(--neutral-50)"></button>
+          </div>
+        </div>
+        <div id="tab-demo" role="tabpanel" aria-labelledby="t-demo">
+          <div class="big-stage fond-violet" id="stage"><span class="reveal-word" data-split>Brique</span></div>
+          <div class="toolbar" style="margin-top:var(--space-3)">
+            <button class="btn outline" id="replay">Rejouer</button>
+            <label class="switch"><input type="checkbox" id="reduce"> Animations réduites</label>
+          </div>
+        </div>
+        <div id="tab-code" role="tabpanel" aria-labelledby="t-code" hidden>
+          <div class="code-head"><code>LetterReveal.vue</code><button class="btn" data-copy="&lt;LetterReveal text=&quot;Brique&quot; as=&quot;h1&quot; start=&quot;visible&quot; /&gt;">Copier</button></div>
+<pre><span class="tk-c">&lt;!-- Les lettres montent une à une --&gt;</span>
+<span class="tk-t">&lt;</span><span class="tk-k">script</span> <span class="tk-t">setup lang=</span><span class="tk-s">"ts"</span><span class="tk-t">&gt;</span>
+<span class="tk-k">import</span> LetterReveal <span class="tk-k">from</span> <span class="tk-s">'./LetterReveal.vue'</span>
+<span class="tk-t">&lt;/</span><span class="tk-k">script</span><span class="tk-t">&gt;</span>
+
+<span class="tk-t">&lt;</span><span class="tk-k">template</span><span class="tk-t">&gt;</span>
+  <span class="tk-t">&lt;LetterReveal text=</span><span class="tk-s">"Brique"</span> <span class="tk-t">as=</span><span class="tk-s">"h1"</span> <span class="tk-t">start=</span><span class="tk-s">"visible"</span> <span class="tk-t">/&gt;</span>
+<span class="tk-t">&lt;/</span><span class="tk-k">template</span><span class="tk-t">&gt;</span></pre>
+        </div>
+      </div>
+      <div>
+        <table>
+          <thead><tr><th>Prop</th><th>Défaut</th><th>Rôle</th></tr></thead>
+          <tbody>
+            <tr><td><code>text</code></td><td>—</td><td>Le texte à révéler</td></tr>
+            <tr><td><code>as</code></td><td><code>span</code></td><td>Balise rendue</td></tr>
+            <tr><td><code>stagger</code></td><td>40 ms</td><td>Écart entre deux lettres</td></tr>
+            <tr><td><code>start</code></td><td><code>load</code></td><td><code>load</code>, <code>visible</code> ou <code>manual</code></td></tr>
+          </tbody>
+        </table>
+        <p class="note" style="margin:var(--space-5) 0 0">Animations réduites : le mot apparaît d'un simple fondu, sans déplacement. Ne l'utilise pas pour du texte courant : il ralentit la lecture.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="logos" class="fond-nuit" style="padding-top:0">
+    <div class="wrap">
+      <h2>Logo</h2>
+      <p class="note">Trois pistes, toutes sur le symbole Kokonut du Portfolio. A est recommandée : même construction que le logo du Portfolio.</p>
+      <div class="logos">
+        <figure class="fond-creme"><span class="logo"><svg aria-hidden="true"><use href="#kokonut"/></svg>KokoDesign</span><figcaption>A — symbole + Bagel</figcaption></figure>
+        <figure class="fond-creme"><span class="logo b"><svg aria-hidden="true"><use href="#kokonut"/></svg>Koko<span class="d">Design</span></span><figcaption>B — Bagel + Fraunces italique</figcaption></figure>
+        <figure class="fond-creme"><span class="logo c"><svg aria-hidden="true"><use href="#kokonut"/></svg>KokoDesign</span><figcaption>C — symbole + Manrope</figcaption></figure>
+        <figure class="fond-violet"><span class="favicon"><svg aria-hidden="true" viewBox="27 27 146 146"><use href="#kokonut"/></svg></span><figcaption>Favicon lime, pour le distinguer du Portfolio (violet)</figcaption></figure>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+// Découpe un mot en lettres pour l'animation, en gardant le mot lisible aux lecteurs d'écran
+function split(el, text) {
+  el.setAttribute('aria-label', text);
+  el.innerHTML = [...text].map((ch, i) => `<span aria-hidden="true" style="--i:${i}">${ch}</span>`).join('');
+}
+split(document.getElementById('hero-title'), 'KokoDesign');
+document.querySelectorAll('[data-split]').forEach(el => split(el, el.textContent));
+
+const stage = document.getElementById('stage');
+const replay = () => { stage.classList.remove('play'); void stage.offsetWidth; stage.classList.add('play'); };
+document.getElementById('replay').onclick = replay;
+document.getElementById('reduce').onchange = e => { stage.classList.toggle('reduce', e.target.checked); replay(); };
+replay();
+
+document.querySelectorAll('.swatches button').forEach(b => b.onclick = () => {
+  document.querySelectorAll('.swatches button').forEach(o => o.setAttribute('aria-pressed', o === b));
+  stage.className = stage.className.replace(/fond-[\w-]+/, 'fond-' + b.dataset.fond);
+});
+
+const tabs = [...document.querySelectorAll('[role=tab]')];
+function select(tab) {
+  tabs.forEach(t => {
+    const on = t === tab;
+    t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1;
+    document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+  });
+  tab.focus();
+}
+tabs.forEach((t, i) => {
+  t.onclick = () => select(t);
+  t.onkeydown = e => { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') select(tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length]); };
+});
+
+document.querySelectorAll('[data-copy]').forEach(b => b.onclick = async () => {
+  const label = b.textContent;
+  try { await navigator.clipboard.writeText(b.dataset.copy); b.textContent = 'Copié'; }
+  catch { b.textContent = 'Copie impossible'; }
+  setTimeout(() => (b.textContent = label), 2000);
+});
+</script>
+</body>
+</html>
