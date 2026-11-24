@@ -15,3 +15,7 @@
 | 2026-11-24 | Composants copiés depuis le Portfolio, sans lien de synchronisation | Démarrer vite sans publier de paquet ; le Portfolio reste inchangé |
 | 2026-11-24 | Lancement avec les 26 composants génériques du Portfolio (remplace la liste de 10) | Ils existent déjà ; les composants propres au site sont exclus |
 | 2026-11-24 | Pas de thème clair / sombre ; démos sur les six fonds de section | La DA est sombre par nature, les fonds jouent ce rôle |
+| 2026-11-24 | KokoDesign est une sous-marque du Portfolio | Même auteur et même DA ; seuls la promesse, le public et le ton changent |
+| 2026-11-24 | Promesse : « Des briques prêtes à copier, déjà testées en vrai. » | Dit l'usage et la preuve (composants issus d'un site en production) |
+| 2026-11-24 | Tutoiement dans la documentation | Usage courant dans la documentation pour développeurs |
+| 2026-11-24 | Site bilingue français / anglais | Public dev francophone et international ; complète le MVP du PRD (i18n à prévoir en phases 4 et 7) |
