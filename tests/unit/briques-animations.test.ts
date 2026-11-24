@@ -6,6 +6,15 @@ import ScrollHint from '../../src/components/animations/ScrollHint.vue'
 import LetterReveal from '../../src/components/textes/LetterReveal.vue'
 
 describe('LetterReveal', () => {
+  it('n’apparaît d’office au bout de 3 s qu’au chargement, pas en démarrage manuel', () => {
+    expect(mount(LetterReveal, { props: { text: 'A', start: 'load' } }).classes()).toContain(
+      'fallback',
+    )
+    expect(mount(LetterReveal, { props: { text: 'A', start: 'manual' } }).classes()).not.toContain(
+      'fallback',
+    )
+  })
+
   it('garde le texte en clair et découpe les lettres à part, numérotées', () => {
     const w = mount(LetterReveal, { props: { text: 'Costa M', as: 'h1', start: 'manual' } })
     expect(w.element.tagName).toBe('H1')
@@ -26,6 +35,15 @@ describe('LetterReveal', () => {
 })
 
 describe('DragToSnap', () => {
+  it('sans cible, n’est jamais « proche » pendant un glisser', async () => {
+    const w = mount(DragToSnap, { props: { label: 'Replacer' } })
+    w.element.setPointerCapture = () => {}
+    const pointer = { isPrimary: true, button: 0, pointerId: 1 }
+    await w.trigger('pointerdown', { ...pointer, clientX: 0, clientY: 0 })
+    await w.trigger('pointermove', { ...pointer, clientX: 20, clientY: 0 })
+    expect(w.emitted('near')).toBeUndefined()
+  })
+
   it('au clavier, se loge dans la cible et le signale', async () => {
     const target = document.createElement('div')
     const w = mount(DragToSnap, { props: { target, label: 'Replacer' } })

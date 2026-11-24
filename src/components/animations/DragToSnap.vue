@@ -76,7 +76,8 @@ function onMove(event: PointerEvent) {
   if (!d || !event.isPrimary) return
   offset.value = { x: event.clientX - d.px, y: event.clientY - d.py }
   dragged ||= Math.hypot(offset.value.x, offset.value.y) > 4
-  setNear(Math.hypot(d.tx - offset.value.x, d.ty - offset.value.y) < props.reach)
+  // Sans cible (pas encore rendue), rien n'est « proche » : l'élément revient à sa place au relâcher
+  setNear(!!props.target && Math.hypot(d.tx - offset.value.x, d.ty - offset.value.y) < props.reach)
 }
 
 function onUp(event: PointerEvent) {

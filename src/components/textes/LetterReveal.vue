@@ -66,7 +66,7 @@ onBeforeUnmount(() => {
   <component
     :is="as"
     ref="root"
-    :class="['letters', { pending, stack, fallback: start !== 'visible' }]"
+    :class="['letters', { pending, stack, fallback: start === 'load' }]"
     :style="{
       '--delay': `${delay}s`,
       '--stagger': stagger === undefined ? undefined : `${stagger}s`,
