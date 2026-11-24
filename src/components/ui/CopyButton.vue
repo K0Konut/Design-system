@@ -20,10 +20,13 @@ const status = ref<'idle' | 'copied' | 'selected'>('idle')
 const address = ref<HTMLElement>()
 let timer: ReturnType<typeof setTimeout> | undefined
 
-/** Durée d'affichage de la confirmation : le token --feedback-hold (en secondes) */
+/** Durée d'affichage de la confirmation : le token --feedback-hold, en s ou en ms */
 function holdMs() {
-  const value = address.value && getComputedStyle(address.value).getPropertyValue('--feedback-hold')
-  return (parseFloat(value || '') || 2) * 1000
+  const value =
+    (address.value && getComputedStyle(address.value).getPropertyValue('--feedback-hold')) || ''
+  const n = parseFloat(value)
+  if (!n) return 2000
+  return value.trim().endsWith('ms') ? n : n * 1000
 }
 
 function settle(next: 'copied' | 'selected') {
