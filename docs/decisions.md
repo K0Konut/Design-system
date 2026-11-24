@@ -29,3 +29,7 @@
 | 2026-11-24 | Onglet Code : Utilisation + fichier source complet, tous deux copiables | Le copier-coller doit suffire, même pour qui arrive par un moteur de recherche |
 | 2026-11-24 | Page de mentions légales propre à KokoDesign | Site autonome, hébergeur à nommer |
 | 2026-11-24 | Ordre fixe de la page composant, avec un bloc Dépendances | Rigueur ; chaque page doit se suffire à elle-même |
+| 2026-11-24 | Phase 5 en trois lots (socle, fiches, composants du site), une PR chacun | Relire chaque étape ; le volume est trop grand pour une seule PR |
+| 2026-11-24 | Dépendances aux versions du Portfolio ; vite-ssg, vue-i18n et Playwright attendent la phase 7 | Outillage connu ; le moteur du site se décide dans l'architecture technique |
+| 2026-11-24 | Principe « copiable seul » : textes en props (français par défaut), vue-router facultatif | Un composant copié doit marcher sans le contenu ni les traductions d'un site |
+| 2026-11-24 | Ajouts aux tokens : thème du code (`--code-*`) et `--sidebar-width` | Besoins de la DA, sans nouvelle teinte |
