@@ -1,4 +1,4 @@
-# 01 — PRD
+# 01 — PRD · KokoDesign
 
 > Statut : brouillon, à valider · Date : 2026-11-24
 
@@ -43,7 +43,7 @@ Des sites comme react-bits ou vue-bits montrent qu'on peut rassembler ce genre d
 - Page composant : démo en direct, contrôles des props principales, code source copiable, liste des props, notes d'accessibilité.
 - Ajout d'un composant en déposant ses fichiers dans un dossier, avec découverte automatique (aucune route à écrire à la main).
 - Thème clair / sombre.
-- 6 à 10 composants au lancement, mélange UI et Effets.
+- 10 composants au lancement, mélange UI et Effets (voir § 5 bis).
 
 ### Plus tard
 - Recherche et filtres par tag.
@@ -59,14 +59,28 @@ Des sites comme react-bits ou vue-bits montrent qu'on peut rassembler ce genre d
 ## 6. Contraintes
 
 - **Technique** : Vue 3 + TypeScript, site 100 % statique, aucun backend.
-- **Hébergement** : gratuit (GitHub Pages, Netlify ou Vercel).
+- **Hébergement** : build statique déployé sur mon serveur personnel, sous mon nom de domaine.
 - **Accessibilité** : WCAG AA, navigation clavier complète, `prefers-reduced-motion` respecté par chaque effet.
-- **Légal** : pas de cookies ni d'analytics au MVP, donc pas de bandeau RGPD. Licence du code à choisir.
+- **Légal** : pas de cookies ni d'analytics au MVP, donc pas de bandeau RGPD. Code sous licence **MIT**.
 - **Délai et budget** : projet personnel, sans échéance imposée.
+
+## 5 bis. Composants de lancement (proposition)
+
+Les briques UI servent aussi au site lui-même : le site est le premier utilisateur de son design system.
+
+| # | Composant | Catégorie | Pourquoi au lancement |
+|---|---|---|---|
+| 1 | Button | UI | Base de tout ; sert au bouton « Copier » |
+| 2 | Input | UI | Formulaires de tous les projets |
+| 3 | Switch | UI | Sert au sélecteur clair / sombre |
+| 4 | Tabs | UI | Sert à basculer entre Démo et Code |
+| 5 | Card | UI | Sert aux vignettes du catalogue |
+| 6 | Texte révélé | Effets | Révélation lettre par lettre ou mot par mot, très demandé en hero |
+| 7 | Bouton magnétique | Effets | Le bouton suit légèrement le curseur |
+| 8 | Carte spotlight | Effets | Halo lumineux qui suit le curseur sur une carte |
+| 9 | Fond aurora | Effets | Fond animé en dégradé, pour les sections hero |
+| 10 | Marquee infini | Effets | Bandeau défilant de logos ou de texte |
 
 ## 7. Questions ouvertes
 
-1. **Nom du site** : réutiliser ton pseudo (ex. « Konut UI ») ou trouver un nom à part ? Ce choix nourrit la phase 2 (marque).
-2. **Licence** : MIT (on peut tout copier librement) ou tous droits réservés (vitrine seulement) ?
-3. **Premiers composants** : lesquels veux-tu en priorité ? Sinon je proposerai une liste en phase 4.
-4. **Hébergement** : as-tu une préférence (GitHub Pages, Netlify ou Vercel) et un nom de domaine ?
+1. **Domaine** : sous quelle adresse le site sera-t-il servi (domaine racine ou sous-domaine) ? À trancher avant la phase 7.
