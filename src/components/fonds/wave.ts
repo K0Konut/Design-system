@@ -31,13 +31,13 @@ export function wavePath(
     [60 + r() * 30, 0.04 + r() * 0.05],
   ].map(([length = 1, share = 0]) => ({ length, a: amp * share, phase: r() * 6.283 }))
 
+  const yAt = (x: number) =>
+    waves.reduce((y, w) => y + w.a * Math.sin((6.283 * x) / w.length + w.phase), y0)
   const points: [number, number][] = []
   const step = Math.max(8, W / 120)
-  for (let x = 0; x <= W + 0.1; x += step) {
-    let y = y0
-    for (const w of waves) y += w.a * Math.sin((6.283 * x) / w.length + w.phase)
-    points.push([x, y])
-  }
+  for (let x = 0; x < W; x += step) points.push([x, yAt(x)])
+  // Toujours un dernier point au bord droit, quelle que soit la largeur
+  points.push([W, yAt(W)])
   points.reverse()
 
   // Courbe lissée (Catmull-Rom vers Bézier) de droite à gauche, sous le bord haut plein
