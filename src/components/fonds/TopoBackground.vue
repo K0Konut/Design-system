@@ -43,8 +43,9 @@ watch(
   () => started && start(),
 )
 onBeforeUnmount(() => {
+  // Les numéros d'idle et de minuteur sont deux séries distinctes : n'annuler que celle qui a servi
   if ('cancelIdleCallback' in window) cancelIdleCallback(idle)
-  clearTimeout(idle)
+  else clearTimeout(idle)
   stop?.()
 })
 </script>

@@ -87,7 +87,11 @@ export function startTopography(
     gl.attachShader(program, shader)
   }
   gl.linkProgram(program)
-  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) return undefined
+  // Échec (teinte illisible, pilote) : libérer le contexte, sinon chaque nouvel essai en garde un de plus
+  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+    gl.getExtension('WEBGL_lose_context')?.loseContext()
+    return undefined
+  }
   gl.useProgram(program)
 
   // Un triangle qui couvre tout l'écran
