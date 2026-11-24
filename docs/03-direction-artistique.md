@@ -1,6 +1,6 @@
 # 03 — Direction artistique · KokoDesign
 
-> Statut : brouillon, à valider · Date : 2026-11-24
+> Statut : validé · Date : 2026-11-24
 > Planche de tendance : `docs/06-maquettes/moodboard.html` (à ouvrir dans un navigateur)
 
 S'appuie sur le PRD (extraction du design system du Portfolio) et sur le territoire de marque (sous-marque, promesse « Des briques prêtes à copier, déjà testées en vrai. », synthèse § 9). La direction artistique du Portfolio (`~/Projects/Portfolio/docs/03-direction-artistique.md`, v1.3) **fait foi** pour tout ce qui n'est pas redéfini ici.
